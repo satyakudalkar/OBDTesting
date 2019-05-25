@@ -11,39 +11,21 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.net.PlacesClient;
-import com.google.android.libraries.places.widget.Autocomplete;
-import com.google.android.libraries.places.widget.AutocompleteActivity;
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static android.app.Activity.RESULT_OK;
 import static androidx.core.content.PermissionChecker.checkSelfPermission;
 
 
@@ -72,6 +54,7 @@ public class TripFragment extends Fragment {
 
     List<Place.Field> fields;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    Intent placesIntent;
 
     public TripFragment() {
         // Required empty public constructor
@@ -110,33 +93,23 @@ public class TripFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
-        Places.initialize(getActivity(), String.valueOf(R.string.google_maps_key));
 
-        if (!Places.isInitialized()) {
-            Places.initialize(getActivity(), String.valueOf(R.string.google_maps_key));
-        }
-        PlacesClient placesClient= Places.createClient(getActivity());
-        EditText destText = (EditText) view.findViewById(R.id.destination_txt);
-        Button setDest = (Button) view.findViewById(R.id.start_trip_btn);
-        setDest.setOnClickListener(new View.OnClickListener() {
+//        if (!Places.isInitialized()) {
+//            Places.initialize(getActivity(), String.valueOf(R.string.google_maps_key));
+//            Log.i("PlacesInitialization","Places API Initialized : "+Places.isInitialized());
+//        }
+//        else{
+//            Log.i("PlacesInitialization","Places API Initialized : "+Places.isInitialized());
+//        }
+
+        Button trip = (Button) view.findViewById(R.id.start_trip_btn);
+        trip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(),TripActivity.class);
-                intent.putExtra("DestLat",dest.latitude);
-                intent.putExtra("DestLong",dest.longitude);
                 intent.putExtra("SrcLat",srclat);
                 intent.putExtra("SrcLong",srclong);
                 startActivity(intent);
-            }
-        });
-        destText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME);
-                Intent intent = new Autocomplete.IntentBuilder(
-                        AutocompleteActivityMode.OVERLAY, fields)
-                        .build(getActivity());
-                startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
             }
         });
         return view;
@@ -149,22 +122,22 @@ public class TripFragment extends Fragment {
         }
 
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                Place place = Autocomplete.getPlaceFromIntent(data);
-                //Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
-                dest=place.getLatLng();
-            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
-                // TODO: Handle the error.
-                Status status = Autocomplete.getStatusFromIntent(data);
-                //Log.i(TAG, status.getStatusMessage());
-            } else if (resultCode == Activity.RESULT_CANCELED) {
-                // The user canceled the operation.
-            }
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
+//            if (resultCode == RESULT_OK) {
+//                Place place = Autocomplete.getPlaceFromIntent(data);
+//                //Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
+//                dest=place.getLatLng();
+//            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+//                // TODO: Handle the error.
+//                Status status = Autocomplete.getStatusFromIntent(data);
+//                //Log.i(TAG, status.getStatusMessage());
+//            } else if (resultCode == Activity.RESULT_CANCELED) {
+//                // The user canceled the operation.
+//            }
+//        }
+//    }
 
     @Override
     public void onAttach(Context context) {
@@ -220,10 +193,14 @@ public class TripFragment extends Fragment {
 //            }
 //        });
 
-        int AUTOCOMPLETE_REQUEST_CODE = 1;
 
 // Set the fields to specify which types of place data to
-// return after the user has made a selection.
+
+//        fields = Arrays.asList(Place.Field.ID, Place.Field.NAME);
+//
+//        placesIntent = new Autocomplete.IntentBuilder(
+//                AutocompleteActivityMode.OVERLAY, fields)
+//                .build(context);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
         fusedLocationClient.getLastLocation()

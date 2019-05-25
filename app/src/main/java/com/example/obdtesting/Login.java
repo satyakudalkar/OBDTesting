@@ -42,17 +42,20 @@ public class Login extends AppCompatActivity {
                 SharedPreferences data=getSharedPreferences(String.valueOf(R.string.shared_pref_user_data),MODE_PRIVATE);
                 Gson gson = new Gson();
                 int flag=0;
-                for(int i=0;i<cnt;i++){
+                int i;
+                for(i=0;i<cnt;i++){
                     String json = data.getString(String.valueOf(R.string.json_objects+i),"");
                     Log.i("DataJson",""+json);
                     driverDetails = gson.fromJson(json,DriverDetails.class);
                     if(driverDetails.username.equals(mTextUsername.getText().toString())&&driverDetails.password.equals(mTextPassword.getText().toString())){
                         flag = 1;
+                        break;
                     }
                 }
                 if(flag==1)
                 {
                     Intent intent=new Intent(Login.this,HomeActivity.class);
+                    intent.putExtra("UserID",i);
                     startActivity(intent);
                 }
                 else{

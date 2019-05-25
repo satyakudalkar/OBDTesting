@@ -22,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TripActivity"></activity>
+        <activity android:name=".TripActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
@@ -38,13 +39,11 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Signup" />
-        <activity android:name=".GaugeActivity" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

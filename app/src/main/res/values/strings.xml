@@ -49,7 +49,7 @@
     <string name="shared_pref_user_count">DriverCount</string>
     <string name="shared_pref_user_data">DriverData</string>
     <string name="json_objects">JSONOBJECTS</string>
-    <string name="title_activity_home">Home Activity</string>
+    <string name="title_activity_home">OBD Driver</string>
     <string name="title_activity_maps">Maps Activity</string>
-    <string name="google_maps_key">AIzaSyB2s8riaQuwXfDR_VUT0QXxXGDuK2OT25w</string>
+    <string name="application_name">OBD Testing</string>
 </resources>

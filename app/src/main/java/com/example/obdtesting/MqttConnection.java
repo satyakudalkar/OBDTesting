@@ -16,13 +16,13 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MqttConnection {
     MqttAndroidClient client;
-    public void connect(final Context context, final GaugeActivity object) {
+    public void connect(final Context context, final TripActivity object) {
         String clientId = MqttClient.generateClientId();
 
         MqttConnectOptions options = new MqttConnectOptions();
 
         options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_DEFAULT);
-        client = new MqttAndroidClient(context, "tcp://192.168.0.33:1883", clientId);
+        client = new MqttAndroidClient(context, "tcp://192.168.0.34:1883", clientId);
         try {
             IMqttToken token = client.connect(options);
             token.setActionCallback(new IMqttActionListener() {
