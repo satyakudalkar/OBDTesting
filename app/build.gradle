@@ -35,6 +35,8 @@ dependencies {
     implementation('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2') {
         exclude module: 'support-v4'
     }
+    implementation("com.squareup.okhttp3:okhttp:3.12.2")
+    testImplementation("com.squareup.okhttp3:mockwebserver:3.12.2")
     implementation 'androidx.fragment:fragment:1.0.0'
 }
 repositories {

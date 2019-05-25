@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".TripActivity">
+    tools:context=".TripActivity"
+    android:keepScreenOn="true">
     <RelativeLayout
         android:layout_weight=".5"
         android:layout_width="match_parent"

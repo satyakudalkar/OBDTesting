@@ -16,13 +16,16 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MqttConnection {
     MqttAndroidClient client;
+    String topic="obd",broker="tcp://192.168.0.34:1883";
     public void connect(final Context context, final TripActivity object) {
+
         String clientId = MqttClient.generateClientId();
 
         MqttConnectOptions options = new MqttConnectOptions();
 
         options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_DEFAULT);
-        client = new MqttAndroidClient(context, "tcp://192.168.0.34:1883", clientId);
+        options.setCleanSession(true);
+        client = new MqttAndroidClient(context, broker, clientId);
         try {
             IMqttToken token = client.connect(options);
             token.setActionCallback(new IMqttActionListener() {
@@ -31,7 +34,7 @@ public class MqttConnection {
                     // We are connected
                     Log.i("Mqtt","Connection Successful");
                     try {
-                        client.subscribe("obd", 2, null, new IMqttActionListener() {
+                        client.subscribe(topic, 2, null, new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken) {
                                 Log.i("Mqtt","Subscription Successful");
