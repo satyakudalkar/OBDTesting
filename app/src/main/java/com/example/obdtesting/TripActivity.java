@@ -262,7 +262,7 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onStart() {
         super.onStart();
-        ttsobj=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        ttsobj=new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 ttsobj.setLanguage(Locale.UK);
@@ -273,7 +273,7 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onResume() {
         super.onResume();
-        ttsobj=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        ttsobj=new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 ttsobj.setLanguage(Locale.UK);

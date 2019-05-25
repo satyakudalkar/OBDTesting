@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUsFragment"
+    android:background="@drawable/about_us_backg"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/application_name"
+        android:textSize="52sp"
+        android:drawableStart="@mipmap/ic_launcher_foreground"
+        android:textColor="#e0e0e0"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/about_us_para"
+        android:textSize="20sp"
+        android:textColor="#e0e0e0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/publication"
+        android:textSize="40sp"
+        android:textColor="#e0e0e0"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/ic_iconfinder_certificate"/>
+
+    <TextView
+        android:id="@+id/paper1_url"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/paper1"
+        android:textSize="30sp"
+        android:textColor="#0000FF"
+        />
+    <TextView
+        android:id="@+id/paper2_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:text="@string/paper2"
+        android:textColor="#0000FF"/>
+</LinearLayout>

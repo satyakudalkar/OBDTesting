@@ -52,4 +52,8 @@
     <string name="title_activity_home">OBD Driver</string>
     <string name="title_activity_maps">Maps Activity</string>
     <string name="application_name">SmartDr!ve</string>
+    <string name="publication">Publications</string>
+    <string name="paper1">\u2022 Paper Number 1</string>
+    <string name="paper2">\u2022 Paper Number 2</string>
+    <string name="about_us_para">    \u2022 We are Students of AISSMS IOIT who believed cause for humanity.\n    \u2022 We have developed an Drive Assistance application to reduce the number of accidents happens every year.</string>
 </resources>

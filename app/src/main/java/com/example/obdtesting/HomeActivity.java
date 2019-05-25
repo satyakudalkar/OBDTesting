@@ -21,13 +21,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, TripFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, TripFragment.OnFragmentInteractionListener, AboutUsFragment.OnFragmentInteractionListener {
     public static String current_user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,24 +95,32 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Fragment fragment=null;
+        Class fragmentClass = TripFragment.class;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-            TripFragment fragment = new TripFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.add(R.id.home_container,fragment).commit();
+            fragmentClass = TripFragment.class;
         } else if (id == R.id.nav_logout) {
             Intent intent=new Intent(HomeActivity.this,Login.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_about_us) {
-
+            fragmentClass= AboutUsFragment.class;
         } else if (id == R.id.nav_contact_us) {
 
         }
 
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.home_container,fragment).commit();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
