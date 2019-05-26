@@ -13,10 +13,14 @@ import android.os.Bundle;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
@@ -101,7 +105,7 @@ public class TripFragment extends Fragment {
 //        else{
 //            Log.i("PlacesInitialization","Places API Initialized : "+Places.isInitialized());
 //        }
-
+        final EditText urltxt=(EditText) view.findViewById(R.id.broker_url);
         Button trip = (Button) view.findViewById(R.id.start_trip_btn);
         trip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +113,8 @@ public class TripFragment extends Fragment {
                 Intent intent=new Intent(getActivity(),TripActivity.class);
                 intent.putExtra("SrcLat",srclat);
                 intent.putExtra("SrcLong",srclong);
+                intent.putExtra("BrokerUrl",""+urltxt.getText().toString());
+                Log.i("BrokerUserInput","User entered following Url"+urltxt.getText().toString());
                 startActivity(intent);
             }
         });

@@ -57,6 +57,7 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
     private MqttConnection mqttConnection;
     private OkHttpClient httpclient;
     private Request request;
+    private String broker_url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
         Intent intent = getIntent();
         srcLat = intent.getDoubleExtra("SrcLat", 0);
         srcLong = intent.getDoubleExtra("SrcLong", 0);
+        broker_url=intent.getStringExtra("BrokerUrl");
         l=new Location(LocationManager.GPS_PROVIDER);
         l.setLongitude(srcLong);
         l.setLatitude(srcLat);
@@ -104,9 +106,7 @@ public class TripActivity extends AppCompatActivity implements OnMapReadyCallbac
         engineTemp=(PointerSpeedometer) findViewById(R.id.engineTemp);
         milage = (TextView) findViewById(R.id.milage);
         user = (TextView) findViewById(R.id.user_name_txt);
-
-
-        mqttConnection=new MqttConnection();
+        mqttConnection=new MqttConnection(broker_url);
         mqttConnection.connect(this.getApplicationContext(),this);
         utteranceID=0;
 

@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity
         TextView title=(TextView) headerView.findViewById(R.id.nav_title);
         TextView subTitle=(TextView) headerView.findViewById(R.id.nav_subtitle);
         Intent intent=getIntent();
-        int i=intent.getIntExtra("User_ID",0);
+        int i=intent.getIntExtra("UserID",0);
         SharedPreferences sharedPreferences= (SharedPreferences) getSharedPreferences(String.valueOf(R.string.shared_pref_user_data+i),MODE_PRIVATE);
         Gson gson=new Gson();
         String json = sharedPreferences.getString(String.valueOf(R.string.json_objects+i),"");

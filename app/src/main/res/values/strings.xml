@@ -55,5 +55,16 @@
     <string name="publication">Publications</string>
     <string name="paper1">\u2022 Paper Number 1</string>
     <string name="paper2">\u2022 Paper Number 2</string>
+    <string name="broker_url">Enter MQTT IP address</string>
     <string name="about_us_para">    \u2022 We are Students of AISSMS IOIT who believed cause for humanity.\n    \u2022 We have developed an Drive Assistance application to reduce the number of accidents happens every year.</string>
+    <string name="project_members">Project Members</string>
+    <string name="name_tejas_gadsing">Tejas Gadsing</string>
+    <string name="string_user">User</string>
+    <string name="tejas_email">tejasgadsing@gmail.com</string>
+    <string name="name_satyajeet_kudalkar">Satyajeet Kudalkar</string>
+    <string name="email_satya">kudalkarsatyajeet@gmail.com</string>
+    <string name="name_prashant_salunkhe">Prashant Salunkhe</string>
+    <string name="email_parshya">psalunkhe158@gmail.com</string>
+    <string name="name_amol_chaudhary">Amol Chaudhary</string>
+    <string name="email_amol">amolchaudhary000@gmail.com</string>
 </resources>

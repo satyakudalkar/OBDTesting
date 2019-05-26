@@ -16,7 +16,12 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MqttConnection {
     MqttAndroidClient client;
-    String topic="obd",broker="tcp://192.168.0.34:1883";
+    String topic="obd",broker;
+    public MqttConnection(String broker_url)
+    {
+        this.broker="tcp://"+broker_url+":1883";
+        Log.i("Broker","Broker Url is: "+broker);
+    }
     public void connect(final Context context, final TripActivity object) {
 
         String clientId = MqttClient.generateClientId();
