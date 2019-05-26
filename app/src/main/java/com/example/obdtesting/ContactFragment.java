@@ -79,7 +79,59 @@ public class ContactFragment extends Fragment {
         parshyaCall=(ImageView) view.findViewById(R.id.parshya_call);
         amolFb=(ImageView) view.findViewById(R.id.amol_fb);
         amolCall=(ImageView) view.findViewById(R.id.amol_call);
-        setListeners(view);
+
+        satyaFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/satyakudalkar")));
+            }
+        });
+        tejasFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/tejas.gadsing")));
+            }
+        });
+        parshyaFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/prashant.salunkhe.31")));
+            }
+        });
+        amolFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/amol.chaudhary.948")));
+            }
+        });
+        satyaCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:8055823724")));
+            }
+        });
+        tejasCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:9763006086")));
+            }
+        });
+        parshyaCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:9762705510")));
+            }
+        });
+        amolCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:7057435318")));
+            }
+        });
+
+
+        //-----------------------------------------------------
+
         return view;
     }
 
@@ -120,55 +172,5 @@ public class ContactFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-    private void setListeners(View view){
-        satyaFb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/satyakudalkar")));
-            }
-        });
-        tejasFb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/tejas.gadsing")));
-            }
-        });
-        parshyaFb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/prashant.salunkhe.31")));
-            }
-        });
-        amolFb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/amol.chaudhary.948")));
-            }
-        });
-        satyaCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:8055823724")));
-            }
-        });
-        tejasCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:9763006086")));
-            }
-        });
-        satyaCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:9762705510")));
-            }
-        });
-        satyaCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:7057435318")));
-            }
-        });
     }
 }

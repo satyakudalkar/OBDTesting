@@ -30,7 +30,7 @@ public class AboutUsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private TextView paper1,paper2;
+    private TextView paper1,paper2,github;
     private OnFragmentInteractionListener mListener;
 
     public AboutUsFragment() {
@@ -73,6 +73,13 @@ public class AboutUsFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_about_us, container, false);
         paper1=view.findViewById(R.id.paper1_url);
         paper2=view.findViewById(R.id.paper2_url);
+        github=view.findViewById(R.id.github);
+        github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/satyakudalkar/OBDTesting")));
+            }
+        });
         paper1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

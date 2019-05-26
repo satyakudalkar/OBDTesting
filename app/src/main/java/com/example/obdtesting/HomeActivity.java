@@ -28,7 +28,7 @@ import android.view.Menu;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, TripFragment.OnFragmentInteractionListener, AboutUsFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, TripFragment.OnFragmentInteractionListener, AboutUsFragment.OnFragmentInteractionListener, ContactFragment.OnFragmentInteractionListener {
     public static String current_user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +110,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_about_us) {
             fragmentClass= AboutUsFragment.class;
         } else if (id == R.id.nav_contact_us) {
+            fragmentClass = ContactFragment.class;
 
         }
 
